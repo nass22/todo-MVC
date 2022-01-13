@@ -30,3 +30,10 @@ function deleteToDo($id){
     $stm->execute();
 }
 
+function deleteTable(){
+    $db=dbConnect();
+    $sqlQuery='TRUNCATE TABLE todo';
+    $stm=$db->prepare($sqlQuery);
+    $stm->execute();
+}
+

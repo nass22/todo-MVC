@@ -3,7 +3,7 @@
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
-require('model.php');
+require('model/model.php');
 
 function addToDo($todo, $date, $finish){
     $affectedLines = addToDoDb($todo, $date, $finish);
@@ -18,7 +18,7 @@ function addToDo($todo, $date, $finish){
 
 function addGetToDo(){
     $resp=getToDo();
-    require('indexView.php');
+    require('view/indexView.php');
 }
 
 function deleteLine($id){
@@ -27,3 +27,8 @@ function deleteLine($id){
     header("Location: index.php");
 }
 
+function allDelete(){
+    deleteTable();
+    echo "Table vidée";
+    header("Location: index.php");
+}

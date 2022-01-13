@@ -3,7 +3,7 @@
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
-require('controller.php');
+require('controller/controller.php');
 
 
 date_default_timezone_set('Europe/Paris');
@@ -14,8 +14,10 @@ $finish1 = 0;
 if (isset($_GET['action'])){
     if ($_GET['action'] == 'addToDo'){
         addToDo($_POST['todo'], $date1, $finish1);
+    } elseif ($_GET['action']== 'truncate'){
+        allDelete();
     } else {
-        echo "Impossible d'ajouter un todo";
+        echo "ERROR: un problème est survenu!";
     }
 } elseif (isset($_GET['id'])){
     if (!empty($_GET['id'])){
