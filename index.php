@@ -11,22 +11,25 @@ date_default_timezone_set('Europe/Paris');
 $date1 = date('d-m-y G:i:s');
 $finish1 = 0;
 
+try{
+    if (isset($_GET['action'])){
+        if ($_GET['action'] == 'addToDo'){
+            addToDo($_POST['todo'], $date1, $finish1);
+        } elseif ($_GET['action']== 'truncate'){
+            allDelete();
+        } else {
+            throw new Exception("ERROR: un problème est survenu!");
+        }
+    } elseif (isset($_GET['id'])){
+        if (!empty($_GET['id'])){
+            deleteLine($_GET['id']);
+        } else {
+            throw new Exception("Impossible de supprimer le todo");
+        }
 
-if (isset($_GET['action'])){
-    if ($_GET['action'] == 'addToDo'){
-        addToDo($_POST['todo'], $date1, $finish1);
-    } elseif ($_GET['action']== 'truncate'){
-        allDelete();
     } else {
-        echo "ERROR: un problème est survenu!";
+        addGetToDo();
     }
-} elseif (isset($_GET['id'])){
-    if (!empty($_GET['id'])){
-        deleteLine($_GET['id']);
-    } else {
-        echo "Impossible de supprimer le todo";
-    }
-
-} else {
-    addGetToDo();
+} catch(Exception $e){
+    echo "Erreur: " . $e->getMessage();
 }

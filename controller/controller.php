@@ -1,15 +1,11 @@
 <?php
-//Permet de display les erreurs
-error_reporting(E_ALL);
-ini_set("display_errors", 1);
-
 require('model/model.php');
 
 function addToDo($todo, $date, $finish){
     $affectedLines = addToDoDb($todo, $date, $finish);
     
     if ($affectedLines === false) {
-        die('Impossible d\'ajouter le todo');
+        throw new Exception("Impossible d\'ajouter le todo");
     } else {
         echo 'Todo ajouté!';
         header('Location:index.php');
