@@ -5,8 +5,9 @@ ini_set("display_errors", 1);
 
 require('controller/controller.php');
 
-
+//DATETIME SETTINGS
 date_default_timezone_set('Europe/Paris');
+
 $date1 = date('d-m-y G:i:s');
 $finish1 = 0;
 

@@ -1,5 +1,4 @@
 <?php
-// contient les fonctions pour récupérer dans la DB
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
